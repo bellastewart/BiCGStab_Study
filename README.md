@@ -1,7 +1,7 @@
 # BiCGSTAB Implementation and Comparison Study
 
 **Authors:** Viki Mancoridis & Bella Stewart  
-**Institution:** MIT DeCoDE Lab
+**Institution:** MIT 
 
 ## Overview
 
