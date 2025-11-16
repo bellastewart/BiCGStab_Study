@@ -18,6 +18,8 @@ From-scratch implementation of the BiCGSTAB iterative solver with comprehensive 
 ```bash
 # Clone repository
 git clone https://github.com/bellastewart/BiCGStab_Study.git
+
+# Navigate to project
 cd BiCGStab_Study
 ```
 
@@ -35,10 +37,7 @@ python -m ipykernel install --user --name bicgstab-study --display-name "BiCGSTA
 
 ## Usage
 ```bash
-# Navigate to project
-cd num_methods
-
-# Launch Jupyter
+# Launch Jupyter (assuming you're already in project directory)
 jupyter notebook
 ```
 
