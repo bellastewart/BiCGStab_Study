@@ -1,7 +1,7 @@
 # BiCGSTAB Implementation and Comparison Study
 
 **Authors:** Viki Mancoridis & Bella Stewart  
-**Institution:** MIT 
+**Institution:** MIT CEE 
 
 ## Overview
 
@@ -17,35 +17,36 @@ From-scratch implementation of the BiCGSTAB iterative solver with comprehensive 
 ## Installation
 ```bash
 # Create environment
-conda create -n bicgstab-study python=3.11 -y
+conda create -n bicgstab-study python=3.11 numpy scipy matplotlib jupyter ipykernel -y
 
-# Activate
+# Activate environment
 conda activate bicgstab-study
 
-# Install dependencies
-conda install numpy scipy matplotlib jupyter notebook ipykernel -y
+# Register as Jupyter kernel
+python -m ipykernel install --user --name bicgstab-study --display-name "BiCGSTAB Study"
 ```
 
 ## Usage
 ```bash
+# Navigate to project
+cd num_methods
+
 # Launch Jupyter
 jupyter notebook
-
-# Run experiments
-# 1. Open and run main.ipynb
-# 2. Open and run summary.ipynb for results
 ```
+
+**In Jupyter:**
+1. Open `main.ipynb` and Select kernel: **BiCGSTAB Study** to run main 
+2. Open `summary.ipynb` and Select kernel: **BiCGSTAB Study** to run summary
+
 
 ## Project Structure
-
-Run main.ipynb first to collect results followed by summary.ipynb to get analysis. 
-
 ```
-├── bicgstab.py          # Validated BiCGSTAB implementation
-├── comparison.py        # Solver comparison framework
-├── test_problems.py     # Poisson & convection-diffusion problems
-├── visualization.py     # Convergence plotting
-├── summary.py          # Analysis and tables
+├── bicgstab.py          # BiCGSTAB implementation
+├── comparison.py        # Solver comparison
+├── test_problems.py     # Test problems
+├── visualization.py     # Plotting
+├── summary.py           # Analysis
 ├── main.ipynb          # Run experiments
 └── summary.ipynb       # View results
 ```
