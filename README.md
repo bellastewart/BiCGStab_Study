@@ -14,6 +14,13 @@ From-scratch implementation of the BiCGSTAB iterative solver with comprehensive 
 -  **5× less memory** than GMRES
 -  **1.7× speedup** with ILU(0) preconditioning
 
+## Getting Started
+```bash
+# Clone repository
+git clone https://github.com/bellastewart/BiCGStab_Study.git
+cd BiCGStab_Study
+```
+
 ## Installation
 ```bash
 # Create environment
