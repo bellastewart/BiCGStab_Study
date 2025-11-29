@@ -50,11 +50,16 @@ jupyter notebook
 ```
 ├── bicgstab.py          # BiCGSTAB implementation
 ├── comparison.py        # Solver comparison
+└── flops_study.py       # Compare FLOPs of BiCGSTAB vs. Scipy solvers
+└── helpers.py           # Helpers for analysis
+├── main.ipynb           # Run experiments
+├── peclet_study.py      # Vary Peclet numbers for problem difficulty
+├── preconditioner_study # Assess effects of the preconditioner
+├── README.md            # README for ease of project use
+└── summary.ipynb        # View results of main experiments
+├── summary.py           # Summary analysis
 ├── test_problems.py     # Test problems
 ├── visualization.py     # Plotting
-├── summary.py           # Analysis
-├── main.ipynb          # Run experiments
-└── summary.ipynb       # View results
 ```
 
 ## References
