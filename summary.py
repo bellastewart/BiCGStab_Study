@@ -1,23 +1,15 @@
 """
 BiCGSTAB Study - Summary Analysis
+
+Authors: Viki Mancoridis & Bella Stewart
 """
 
 import numpy as np
 
-
 def print_summary_table(all_results):
     """
     Print comprehensive summary table for all test problems
-    
-    Parameters:
-    -----------
-    all_results : dict
-        Dictionary mapping problem names to results dictionaries
     """
-    print("\n" + "█"*80)
-    print("CELL 13: COMPREHENSIVE SUMMARY TABLE")
-    print("█"*80)
-    
     print("\n" + "="*80)
     print("SUMMARY TABLE")
     print("="*80)
@@ -27,20 +19,23 @@ def print_summary_table(all_results):
     for prob_name, results in all_results.items():
         for i, (solver, res) in enumerate(results.items()):
             prob_str = prob_name if i == 0 else ""
-            iters = res['info']['iterations']
+            
+            # Handle GMRES special case
+            if 'GMRES' in solver and 'cycles' in res['info']:
+                iters = res['info']['iterations']  # Inner iterations
+                cycles = res['info']['cycles']
+                iter_str = f"{iters} ({cycles}c)"
+            else:
+                iters = res['info']['iterations']
+                iter_str = str(iters)
+            
             error = f"{res['error']:.2e}"
             time_s = f"{res['time']:.3f}"
-            
-            # Special handling for GMRES
-            if 'GMRES' in solver:
-                iter_str = f"{iters} cyc*"
-            else:
-                iter_str = str(iters)
             
             print(f"{prob_str:<25} {solver:<20} {iter_str:<10} {error:<12} {time_s:<10}")
         print("-"*80)
     
-    print("*GMRES(20) shows restart cycles; multiply by 20 for approximate inner iterations")
+    print("Note: GMRES shows inner_iterations (cycles) where c = restart cycles")
     print("="*80)
 
 

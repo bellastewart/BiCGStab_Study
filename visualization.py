@@ -1,11 +1,11 @@
 """
 Visualization Functions for Solver Comparison
 
+Authors: Viki Mancoridis & Bella Stewart
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
-
 
 def plot_convergence_comparison(results_dict, problem_name, save_path=None):
     """
@@ -38,8 +38,19 @@ def plot_convergence_comparison(results_dict, problem_name, save_path=None):
             continue
 
         iters = np.arange(len(residuals))
+        
+        # Create label with appropriate iteration info
+        if 'cycles' in result['info']:
+            # GMRES: Show inner iterations in legend
+            inner_iters = result['info']['iterations']
+            cycles = result['info']['cycles']
+            label = f"{solver_name} (~{inner_iters} inner iters, {cycles} cycles)"
+        else:
+            # Other solvers: Show regular iterations
+            label = f"{solver_name} ({result['info']['iterations']} iters)"
+        
         plt.semilogy(iters, residuals,
-                    label=f"{solver_name} ({result['info']['iterations']} iters)",
+                    label=label,
                     color=colors.get(solver_name, 'black'),
                     marker=markers.get(solver_name, 'o'),
                     markevery=max(1, len(residuals)//10),

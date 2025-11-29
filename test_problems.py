@@ -1,5 +1,7 @@
 """
 Test problem generators for sparse linear systems
+
+Authors: Viki Mancoridis & Bella Stewart
 """
 
 import numpy as np

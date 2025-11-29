@@ -1,5 +1,7 @@
 """
 BiCGSTAB Implementation
+
+Authors: Viki Mancoridis & Bella Stewart
 """
 
 import numpy as np
@@ -44,11 +46,12 @@ def bicgstab(A, b, x0=None, tol=1e-8, maxiter=None, M=None, callback=None):
     """
     A = aslinearoperator(A)
     n = b.shape[0]
+    dtype = b.dtype
 
     if x0 is None:
-        x = np.zeros_like(b, dtype=float)
+        x = np.zeros_like(b, dtype=dtype)
     else:
-        x = x0.copy().astype(float)
+        x = x0.copy().astype(dtype)
 
     if maxiter is None:
         maxiter = min(1000, n)
@@ -64,7 +67,7 @@ def bicgstab(A, b, x0=None, tol=1e-8, maxiter=None, M=None, callback=None):
     r = b - A.matvec(x)
     r_hat = r.copy()  # Shadow residual
     rho_old = alpha = omega = 1.0
-    v = p = np.zeros_like(b, dtype=float)
+    v = p = np.zeros_like(b, dtype=dtype)
 
     res0 = np.linalg.norm(r)
     if res0 == 0:
